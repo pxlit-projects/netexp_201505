@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BEB89453-95F4-43D3-BE63-11314A12B504}</ProjectGuid>
+    <ProjectGuid>{C2CD9A5F-0D5F-4EB8-B84E-DE4BC4520BCD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BruPark.Persistence.Entities</RootNamespace>
-    <AssemblyName>BruPark.Persistence.Entities</AssemblyName>
+    <RootNamespace>GoogleMaps.Client</RootNamespace>
+    <AssemblyName>GoogleMaps.Client</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,14 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,16 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Address.cs" />
-    <Compile Include="Company.cs" />
-    <Compile Include="Feedback.cs" />
-    <Compile Include="Location.cs" />
-    <Compile Include="Parking.cs" />
+    <Compile Include="GoogleMapsClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <ProjectReference Include="..\BruPark.Tools.RestClient\BruPark.Tools.RestClient.csproj">
+      <Project>{f31fb6bd-0a91-46b7-a2a5-6772bf1146b3}</Project>
+      <Name>BruPark.Tools.RestClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoogleMaps.Geocoding.Models\GoogleMaps.Geocoding.Models.csproj">
+      <Project>{efeb6e25-3dfa-42eb-8e34-3c4b6f147737}</Project>
+      <Name>GoogleMaps.Geocoding.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
