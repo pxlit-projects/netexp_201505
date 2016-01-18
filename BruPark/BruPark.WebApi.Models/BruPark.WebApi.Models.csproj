@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AddressRO.cs" />
     <Compile Include="LocationRO.cs" />
+    <Compile Include="ParkingRO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchRequestRO.cs" />
     <Compile Include="SearchResponseRO.cs" />

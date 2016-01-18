@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OpenDataClient.cs" />
+    <Compile Include="Parking.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Range.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BruPark.OpenData.Models\BruPark.OpenData.Models.csproj">

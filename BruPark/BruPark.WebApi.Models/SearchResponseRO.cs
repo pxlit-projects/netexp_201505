@@ -1,19 +1,15 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BruPark.WebApi.Models
 {
     [JsonObject]
     public class SearchResponseRO
     {
-        [JsonProperty(PropertyName = "error")]
+        [JsonProperty(PropertyName = "error", NullValueHandling = NullValueHandling.Ignore)]
         public string Error { get; set; }
 
-        [JsonProperty(PropertyName = "results")]
-        public IList<object> Results { get; set; }
+        [JsonProperty(PropertyName = "results", NullValueHandling = NullValueHandling.Ignore)]
+        public IList<ParkingRO> Results { get; set; }
     }
 }
