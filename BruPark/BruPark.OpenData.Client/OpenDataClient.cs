@@ -86,6 +86,7 @@ namespace BruPark.OpenData.Client
 
                 parking.Disabled = disabled;
                 parking.Geometry = record.Geometry;
+                parking.RecordId = record.RecordId;
 
                 parkings.Add(parking);
             }

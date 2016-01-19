@@ -1,10 +1,10 @@
 ﻿using BruPark.OpenData.Client;
-using BruPark.OpenData.Models;
 using BruPark.Persistence.DataLayer;
 using BruPark.WebApi.Models;
 using GoogleMaps.Client;
 using GoogleMaps.Geocoding.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 
 namespace BruPark.WebApi.Server.Controllers
@@ -88,6 +88,7 @@ namespace BruPark.WebApi.Server.Controllers
                 foreach (Parking input in inputs)
                 {
                     // TODO:  Interaction with database
+                    
 
                     ParkingRO output = new ParkingRO();
 

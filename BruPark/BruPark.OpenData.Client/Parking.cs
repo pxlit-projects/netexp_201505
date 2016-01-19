@@ -20,5 +20,7 @@ namespace BruPark.OpenData.Client
         public Geometry Geometry { get; set; }
 
         public int Places { get; set; }
+
+        public string RecordId { get; set; }
     }
 }
