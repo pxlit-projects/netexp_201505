@@ -8,28 +8,30 @@ namespace BruPark.Persistence.DataLayer.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Parkings",
+                "dbo.ParkingPOes",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        AddressDutchId = c.Int(nullable: false),
-                        AddressFrenchId = c.Int(nullable: false),
-                        Company_Name = c.String(),
+                        AddressDutchId = c.Int(),
+                        AddressFrenchId = c.Int(),
                         CompanyId = c.Int(nullable: false),
                         LocationId = c.Int(nullable: false),
-                        RecordId = c.String(nullable: false),
+                        RecordId = c.String(nullable: false, maxLength: 255),
                         Spaces = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Addresses", t => t.AddressDutchId, cascadeDelete: true)
-                .ForeignKey("dbo.Addresses", t => t.AddressFrenchId, cascadeDelete: true)
-                .ForeignKey("dbo.Locations", t => t.LocationId, cascadeDelete: true)
+                .ForeignKey("dbo.AddressPOes", t => t.AddressDutchId)
+                .ForeignKey("dbo.AddressPOes", t => t.AddressFrenchId)
+                .ForeignKey("dbo.CompanyPOes", t => t.CompanyId, cascadeDelete: true)
+                .ForeignKey("dbo.LocationPOes", t => t.LocationId, cascadeDelete: true)
                 .Index(t => t.AddressDutchId)
                 .Index(t => t.AddressFrenchId)
-                .Index(t => t.LocationId);
+                .Index(t => t.CompanyId)
+                .Index(t => t.LocationId)
+                .Index(t => t.RecordId, unique: true);
             
             CreateTable(
-                "dbo.Addresses",
+                "dbo.AddressPOes",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -38,7 +40,16 @@ namespace BruPark.Persistence.DataLayer.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Locations",
+                "dbo.CompanyPOes",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.LocationPOes",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -51,15 +62,19 @@ namespace BruPark.Persistence.DataLayer.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Parkings", "LocationId", "dbo.Locations");
-            DropForeignKey("dbo.Parkings", "AddressFrenchId", "dbo.Addresses");
-            DropForeignKey("dbo.Parkings", "AddressDutchId", "dbo.Addresses");
-            DropIndex("dbo.Parkings", new[] { "LocationId" });
-            DropIndex("dbo.Parkings", new[] { "AddressFrenchId" });
-            DropIndex("dbo.Parkings", new[] { "AddressDutchId" });
-            DropTable("dbo.Locations");
-            DropTable("dbo.Addresses");
-            DropTable("dbo.Parkings");
+            DropForeignKey("dbo.ParkingPOes", "LocationId", "dbo.LocationPOes");
+            DropForeignKey("dbo.ParkingPOes", "CompanyId", "dbo.CompanyPOes");
+            DropForeignKey("dbo.ParkingPOes", "AddressFrenchId", "dbo.AddressPOes");
+            DropForeignKey("dbo.ParkingPOes", "AddressDutchId", "dbo.AddressPOes");
+            DropIndex("dbo.ParkingPOes", new[] { "RecordId" });
+            DropIndex("dbo.ParkingPOes", new[] { "LocationId" });
+            DropIndex("dbo.ParkingPOes", new[] { "CompanyId" });
+            DropIndex("dbo.ParkingPOes", new[] { "AddressFrenchId" });
+            DropIndex("dbo.ParkingPOes", new[] { "AddressDutchId" });
+            DropTable("dbo.LocationPOes");
+            DropTable("dbo.CompanyPOes");
+            DropTable("dbo.AddressPOes");
+            DropTable("dbo.ParkingPOes");
         }
     }
 }

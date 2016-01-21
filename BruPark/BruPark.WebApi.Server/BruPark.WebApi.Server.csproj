@@ -139,6 +139,14 @@
       <Project>{c2cd9a5f-0d5f-4eb8-b84e-de4bc4520bcd}</Project>
       <Name>GoogleMaps.Client</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GoogleMaps.Commons\GoogleMaps.Commons.csproj">
+      <Project>{1aa15a68-bee7-49df-8581-a5ee831c3282}</Project>
+      <Name>GoogleMaps.Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoogleMaps.DistanceMatrix.Models\GoogleMaps.DistanceMatrix.Models.csproj">
+      <Project>{699100f1-97ed-45a8-92e0-4fc9ba9872ac}</Project>
+      <Name>GoogleMaps.DistanceMatrix.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GoogleMaps.Geocoding.Models\GoogleMaps.Geocoding.Models.csproj">
       <Project>{efeb6e25-3dfa-42eb-8e34-3c4b6f147737}</Project>
       <Name>GoogleMaps.Geocoding.Models</Name>

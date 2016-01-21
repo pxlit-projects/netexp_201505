@@ -54,6 +54,30 @@
     <Compile Include="Migrations\201601190813479_Initial.Designer.cs">
       <DependentUpon>201601190813479_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601201211104_SpecifiedTableNames.cs" />
+    <Compile Include="Migrations\201601201211104_SpecifiedTableNames.Designer.cs">
+      <DependentUpon>201601201211104_SpecifiedTableNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601201213195_AddedFeedbackToParking.cs" />
+    <Compile Include="Migrations\201601201213195_AddedFeedbackToParking.Designer.cs">
+      <DependentUpon>201601201213195_AddedFeedbackToParking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601201551298_PreparationsForDataImport.cs" />
+    <Compile Include="Migrations\201601201551298_PreparationsForDataImport.Designer.cs">
+      <DependentUpon>201601201551298_PreparationsForDataImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601210847328_StandaloneLocations.cs" />
+    <Compile Include="Migrations\201601210847328_StandaloneLocations.Designer.cs">
+      <DependentUpon>201601210847328_StandaloneLocations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601210850430_StandaloneLocations1.cs" />
+    <Compile Include="Migrations\201601210850430_StandaloneLocations1.Designer.cs">
+      <DependentUpon>201601210850430_StandaloneLocations1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601210908126_MadeCompanyOptional.cs" />
+    <Compile Include="Migrations\201601210908126_MadeCompanyOptional.Designer.cs">
+      <DependentUpon>201601210908126_MadeCompanyOptional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -70,6 +94,24 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201601190813479_Initial.resx">
       <DependentUpon>201601190813479_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601201211104_SpecifiedTableNames.resx">
+      <DependentUpon>201601201211104_SpecifiedTableNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601201213195_AddedFeedbackToParking.resx">
+      <DependentUpon>201601201213195_AddedFeedbackToParking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601201551298_PreparationsForDataImport.resx">
+      <DependentUpon>201601201551298_PreparationsForDataImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601210847328_StandaloneLocations.resx">
+      <DependentUpon>201601210847328_StandaloneLocations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601210850430_StandaloneLocations1.resx">
+      <DependentUpon>201601210850430_StandaloneLocations1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601210908126_MadeCompanyOptional.resx">
+      <DependentUpon>201601210908126_MadeCompanyOptional.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,14 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using GoogleMaps.Commons;
+using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GoogleMaps.Geocoding.Models
 {
     [JsonObject]
-    public class GeoLocationRO
+    public class GeoLocationRO : GeoLocation
     {
         [JsonProperty(PropertyName = "lat")]
         public decimal Latitude { get; set; }

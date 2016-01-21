@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Runtime.Serialization;
 
 namespace BruPark.WebApi.Models
 {
@@ -15,10 +14,19 @@ namespace BruPark.WebApi.Models
         [JsonProperty(PropertyName = "disabled")]
         public bool Disabled { get; set; }
 
+        [JsonProperty(PropertyName = "distance")]
+        public long Distance { get; set; }
+
+        [JsonProperty(PropertyName = "duration")]
+        public long Duration { get; set; }
+
         [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
 
-        [JsonProperty(PropertyName = "places")]
-        public int Places { get; set; }
+        [JsonProperty(PropertyName = "spaces")]
+        public int Spaces { get; set; }
+
+        [JsonProperty(PropertyName = "success_rate")]
+        public int SuccessRate { get; set; }
     }
 }
