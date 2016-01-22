@@ -19,6 +19,7 @@ Indien haalbaar zou ik ook graag nog een routebeschrijving toevoegen in de vorm 
 ### APIs
 
 * Google Maps
+ * [DistanceMatrix API] (https://developers.google.com/maps/documentation/distance-matrix/)
  * [Embed API] (https://developers.google.com/maps/documentation/embed/)
  * [Geocoding API] (https://developers.google.com/maps/documentation/geocoding/)
 
