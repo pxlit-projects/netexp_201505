@@ -1,5 +1,5 @@
-﻿using BruPark.OpenData.Client;
-using BruPark.Persistence.DataLayer;
+﻿
+using BruPark.Extensions;
 using BruPark.Persistence.Entities;
 using BruPark.WebApi.Models;
 using GoogleMaps.Client;
@@ -16,14 +16,8 @@ using System.Web.Http;
 namespace BruPark.WebApi.Server.Controllers
 {
     [RoutePrefix("parkings")]
-    public class ParkingsController : ApiController
+    public class ParkingsController : AbstractController
     {
-        private const double D2R = (Math.PI / 180D);
-
-        private BruParkContext db = new BruParkContext();
-
-
-
         private static IList<DistanceMatrixElementRO> CalculateDistanceMatrix(GeoLocation location, IList<ParkingPO> parkings)
         {
             GoogleMapsClient client = new GoogleMapsClient();
@@ -51,22 +45,27 @@ namespace BruPark.WebApi.Server.Controllers
             }
         }
 
-        protected override void Dispose(bool disposing)
+        /// <summary>
+        /// This method uses part of the Haversine formula to calculate an estimated weight for the distance between two geo locations.
+        /// </summary>
+        /// <see cref="https://en.wikipedia.org/wiki/Haversine_formula"/>
+        /// <param name="a">The first geo location</param>
+        /// <param name="b">The second geo location</param>
+        /// <returns>An estimated weight for the distance between A and B</returns>
+        private static double CalculateHaversineWeight(GeoLocation a, GeoLocation b)
         {
-            try
-            {
-                if (db != null)
-                {
-                    db.Dispose();
-                    db = null;
-                }
-            }
-            finally
-            {
-                base.Dispose(disposing);
-            }
-        }
+            double lat0 = a.Latitude.DegreesToRadians();
+            double lng0 = a.Longitude.DegreesToRadians();
 
+            double lat1 = b.Latitude.DegreesToRadians();
+            double lng1 = b.Longitude.DegreesToRadians();
+
+            double sinLat = Math.Sin((lat1 - lat0) / 2D);
+            double sinLng = Math.Sin((lng1 - lng0) / 2D);
+
+            return Math.Asin(Math.Sqrt((sinLat * sinLat) + (Math.Cos(lng0) * Math.Cos(lng1) * sinLng * sinLng)));
+        }
+        
         private static GeoLocation Locate(AddressRO address)
         {
             GoogleMapsClient client = new GoogleMapsClient();
@@ -94,6 +93,8 @@ namespace BruPark.WebApi.Server.Controllers
         {
             SearchResponseRO response = new SearchResponseRO();
 
+            //  Fetch the parkings that match the search criteria from the database.
+
             IList<ParkingPO> parkings = (from p in db.Parkings where p.Disabled == request.Disabled select p).ToList();
 
             if (parkings.Count <= 0)
@@ -103,6 +104,8 @@ namespace BruPark.WebApi.Server.Controllers
                 return Content(HttpStatusCode.NotFound, response);
             }
 
+            //  Translate the current address to a geo location.
+
             GeoLocation location = Locate(request.Address);
 
             if (location == null)
@@ -111,25 +114,14 @@ namespace BruPark.WebApi.Server.Controllers
 
                 return Content(HttpStatusCode.InternalServerError, response);
             }
-
-            double lat0 = (D2R * (double)location.Latitude);
-            double lng0 = (D2R * (double)location.Longitude);
-
-            //  Do a rough sorting, by an estimated distance based on the GPS coordinates. (see https://en.wikipedia.org/wiki/Haversine_formula)
-            //  Select only a few of the closest results.
-            parkings = parkings.OrderBy(park =>
-            {
-                GeoLocation loc = park.Location;
-
-                double lat1 = (D2R * (double)loc.Latitude);
-                double lng1 = (D2R * (double)loc.Longitude);
-
-                double sinLat = Math.Sin((lat1 - lat0) / 2D);
-                double sinLng = Math.Sin((lng1 - lng0) / 2D);
-
-                return Math.Asin(Math.Sqrt((sinLat * sinLat) + (Math.Cos(lng0) * Math.Cos(lng1) * sinLng * sinLng)));
-            }).ToList().GetRange(0, Math.Min(parkings.Count, 30));
             
+            //  Sort the matched parkings by estimated distance (ascending) and select only the first 30.
+            //  The number of parkings should be limited to avoid abusing the Google Maps API in the next step.
+
+            parkings = SortByDistance(parkings, location).Limit(30);
+            
+            //  Request the distance matrix from the Google Maps API.
+
             IList<DistanceMatrixElementRO> matrix = CalculateDistanceMatrix(location, parkings);
 
             if (matrix == null)
@@ -138,6 +130,8 @@ namespace BruPark.WebApi.Server.Controllers
 
                 return Content(HttpStatusCode.InternalServerError, response);
             }
+
+            //  Combine the stored data with the distance matrix to generate the list of potential results.
 
             IList<ParkingRO> results = new List<ParkingRO>(parkings.Count);
 
@@ -159,22 +153,26 @@ namespace BruPark.WebApi.Server.Controllers
 
                 results.Add(result);
             }
+
+            //  Sort the results by travel duration (ascending) and select only the first 20.
             
-            // Sort the remaining results by travel duration (ascending) and take (at most) the first 20 elements.
-            results = results.OrderBy(x => x.Duration).ToList().GetRange(0, Math.Min(results.Count, 20));
+            results = SortByDuration(results).Limit(20);
             
+            //  Send the response.
+
             response.Results = results;
 
-            return Ok<SearchResponseRO>(response);
+            return Ok(response);
         }
 
-        [HttpPost]
-        [Route("{id:int}/feedback")]
-        public IHttpActionResult SubmitFeedback(int id)
+        private static List<ParkingPO> SortByDistance(IList<ParkingPO> parkings, GeoLocation location)
         {
-            Debug.WriteLine("Parking ID = " + id);
+            return parkings.OrderBy(parking => CalculateHaversineWeight(location, parking.Location)).ToList();
+        }
 
-            return Ok();
+        private static List<ParkingRO> SortByDuration(IList<ParkingRO> parkings)
+        {
+            return parkings.OrderBy(parking => parking.Duration).ToList();
         }
     }
 }

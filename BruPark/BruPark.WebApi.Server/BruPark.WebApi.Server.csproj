@@ -95,6 +95,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AbstractController.cs" />
+    <Compile Include="Controllers\ParkingController.cs" />
     <Compile Include="Controllers\ParkingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -115,6 +117,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BruPark.Extensions\BruPark.Extensions.csproj">
+      <Project>{ccfb04cc-1381-4ba4-8afe-6893b8815b7e}</Project>
+      <Name>BruPark.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BruPark.OpenData.Client\BruPark.OpenData.Client.csproj">
       <Project>{81d3c3d4-260d-49e0-8c36-15915c2903cd}</Project>
       <Name>BruPark.OpenData.Client</Name>

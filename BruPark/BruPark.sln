@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMaps.Commons", "Googl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BruPark.Jobs.OpenDataImporter", "BruPark.Jobs.OpenDataImporter\BruPark.Jobs.OpenDataImporter.csproj", "{EE8BEEAD-B491-4136-AC40-42CC90430E4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BruPark.Extensions", "BruPark.Extensions\BruPark.Extensions.csproj", "{CCFB04CC-1381-4BA4-8AFE-6893B8815B7E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{EE8BEEAD-B491-4136-AC40-42CC90430E4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE8BEEAD-B491-4136-AC40-42CC90430E4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE8BEEAD-B491-4136-AC40-42CC90430E4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCFB04CC-1381-4BA4-8AFE-6893B8815B7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCFB04CC-1381-4BA4-8AFE-6893B8815B7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCFB04CC-1381-4BA4-8AFE-6893B8815B7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCFB04CC-1381-4BA4-8AFE-6893B8815B7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

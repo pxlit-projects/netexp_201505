@@ -13,5 +13,12 @@ namespace BruPark.Persistence.Entities
         [MaxLength(255)]
         [Required]
         public string Street { get; set; }
+
+
+
+        public override string ToString()
+        {
+            return Street;
+        }
     }
 }

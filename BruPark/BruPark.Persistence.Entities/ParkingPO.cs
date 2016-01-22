@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace BruPark.Persistence.Entities
 {
@@ -50,22 +51,18 @@ namespace BruPark.Persistence.Entities
             {
                 IList<FeedbackPO> feedbacks = FeedbackList;
 
-                if (feedbacks.Count <= 0)
+                int total = feedbacks.Count;
+
+                if (total <= 0)
                 {
                     return -1;
                 }
 
-                int count = 0;
+                int count = feedbacks.Count(feedback => feedback.Available);
 
-                foreach (FeedbackPO feedback in feedbacks)
-                {
-                    if (feedback.Available)
-                    {
-                        count++;
-                    }
-                }
+                double percentage = ((100D * count) / total);
 
-                return (100 * count / feedbacks.Count);
+                return Convert.ToInt32(Math.Round(percentage, 0, MidpointRounding.AwayFromZero));
             }
         }
     }
