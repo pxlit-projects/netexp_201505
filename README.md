@@ -25,7 +25,9 @@ Indien haalbaar zou ik ook graag nog een routebeschrijving toevoegen in de vorm 
 
 ### Datasets (Open Data)
 
-* Open Data initiatief van de stad Brussel
+* Open Data initiatief van de stad Brussel  (http://opendata.brussel.be)
  * [Public parkings] (http://opendata.brussel.be/explore/dataset/public-parkings/)
  * [Parking spaces for disabled] (http://opendata.brussel.be/explore/dataset/parking-spaces-for-disabled/)
+* The Belgian Open Data Initiative  (http://data.gov.be)
+ * [Gemeentecodes] (http://data.gov.be/nl/dataset/e456064d-1794-4183-9c54-8338782367ab)
 
