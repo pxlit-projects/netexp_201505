@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BruPark.Jobs.OpenDataImport
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BruPark.Extensions", "BruPark.Extensions\BruPark.Extensions.csproj", "{CCFB04CC-1381-4BA4-8AFE-6893B8815B7E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BruPark.Apps.WPF", "BruPark.Apps.WPF\BruPark.Apps.WPF.csproj", "{7C3B983C-8B5B-4191-BF46-156A3DA03145}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{CCFB04CC-1381-4BA4-8AFE-6893B8815B7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCFB04CC-1381-4BA4-8AFE-6893B8815B7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCFB04CC-1381-4BA4-8AFE-6893B8815B7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C3B983C-8B5B-4191-BF46-156A3DA03145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C3B983C-8B5B-4191-BF46-156A3DA03145}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C3B983C-8B5B-4191-BF46-156A3DA03145}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C3B983C-8B5B-4191-BF46-156A3DA03145}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
