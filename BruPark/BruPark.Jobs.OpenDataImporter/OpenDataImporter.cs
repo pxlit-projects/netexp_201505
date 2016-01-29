@@ -173,7 +173,7 @@ namespace BruPark.Jobs.OpenDataImporter
 
         private void ImportParkingsDisabled()
         {
-            IList<Record> records = RestClient.Request<IList<Record>>(URL_DISABLED);
+            IList<Record> records = RestClient.Get<IList<Record>>(URL_DISABLED);
 
             ParkingTemplate template = new ParkingTemplate();
 
@@ -199,7 +199,7 @@ namespace BruPark.Jobs.OpenDataImporter
 
         private void ImportParkingsPublic()
         {
-            IList<Record> records = RestClient.Request<IList<Record>>(URL_PUBLIC);
+            IList<Record> records = RestClient.Get<IList<Record>>(URL_PUBLIC);
 
             ParkingTemplate template = new ParkingTemplate();
 
@@ -210,9 +210,9 @@ namespace BruPark.Jobs.OpenDataImporter
                 if (!String.IsNullOrWhiteSpace(record.RecordId))
                 {
                     IDictionary<string, object> fields = record.Fields;
-
-                    template.AddressFR = Convert.ToString(GetField(fields, "description", "???"));
-                    template.AddressNL = Convert.ToString(GetField(fields, "beschrinving", "???"));
+                    
+                    template.AddressFR = Convert.ToString(GetField(fields, "parking_adresse", "???"));
+                    template.AddressNL = Convert.ToString(GetField(fields, "parking_adresse", "???"));
                     template.Company = Convert.ToString(GetField(fields, "societe_gestionnaire", "???"));
                     template.Location = record.Geometry.Coordinates.Reverse().ToArray();
                     template.RecordId = record.RecordId;

@@ -108,7 +108,7 @@ namespace GoogleMaps.Client
             string url = CreateUrl("distancematrix", parameters);
             Debug.WriteLine("url = " + url);
 
-            return RestClient.Request<DistanceMatrixResponseRO>(url);
+            return RestClient.Get<DistanceMatrixResponseRO>(url);
         }
 
         public GeocodingResponseRO RequestGeocoding(string address)
@@ -120,7 +120,7 @@ namespace GoogleMaps.Client
             string url = CreateUrl("geocode", parameters);
             Debug.WriteLine("url = " + url);
 
-            return RestClient.Request<GeocodingResponseRO>(url);
+            return RestClient.Get<GeocodingResponseRO>(url);
         }
     }
 }

@@ -49,6 +49,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Range.cs" />
+    <Compile Include="TownManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BruPark.OpenData.Models\BruPark.OpenData.Models.csproj">

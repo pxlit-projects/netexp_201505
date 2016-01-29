@@ -15,6 +15,10 @@ namespace BruPark.Persistence.DataLayer
 
 
 
+        public BruParkContext() : base("BruPark") {}
+
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

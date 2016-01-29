@@ -8,8 +8,8 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="SearchFormPage" FontSize="16">
 
-    <StackPanel Margin="16" Orientation="Vertical">
-        <Grid>
+    <DockPanel Margin="16" VerticalAlignment="Stretch">
+        <Grid VerticalAlignment="Stretch">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="3*"/>
@@ -21,14 +21,19 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <TextBox Name="street" Margin="0,0,0,16" Padding="4" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
-            
-            <ComboBox Name="postalCode" Margin="0,0,16,0" Padding="4" Grid.Column="0" Grid.Row="1"/>
-            <ComboBox Name="city" Padding="4" Grid.Column="1" Grid.Row="1"/>
+            <TextBox Name="street" Margin="0,0,0,16" Padding="4,8,4,8" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
 
-            <CheckBox Name="disabled" IsChecked="False" Content="I have a disability" Margin="0,16,0,0" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"/>
+            <ComboBox Name="postalCode" Cursor="Hand" Margin="0,0,16,0" Padding="4,8,4,8" Grid.Column="0" Grid.Row="1"/>
+            <ComboBox Name="city" Cursor="Hand" Padding="4" Grid.Column="1" Grid.Row="1"/>
 
-            <Button Content="Search for a parking space ..." Cursor="Hand" Margin="0,16,0,0" Padding="4" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"/>
+            <CheckBox Name="disabled" Cursor="Hand" FontSize="10" IsChecked="False" Margin="0,16,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="1.6" ScaleY="1.6"/>
+                </CheckBox.LayoutTransform>
+                <TextBlock Margin="4,0,0,0">I have a disability</TextBlock>
+            </CheckBox>
+
+            <Button Content="Search" Cursor="Hand" Margin="0,16,0,0" Padding="8" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"/>
         </Grid>
-    </StackPanel>
+    </DockPanel>
 </Page>

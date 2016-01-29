@@ -41,7 +41,7 @@ namespace BruPark.OpenData.Client
             SearchResult search;
 
             try {
-                search = RestClient.Request<SearchResult>(url);
+                search = RestClient.Get<SearchResult>(url);
             }
             catch (Exception e)
             {
