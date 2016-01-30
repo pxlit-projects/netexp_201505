@@ -173,7 +173,15 @@ namespace BruPark.Jobs.OpenDataImporter
 
         private void ImportParkingsDisabled()
         {
-            IList<Record> records = RestClient.Get<IList<Record>>(URL_DISABLED);
+            Response<IList<Record>> response = RestClient.Get<IList<Record>>(URL_DISABLED);
+
+            if (response.Failure)
+            {
+                Debug.WriteLine("ERROR:  " + response.Error);
+                return;
+            }
+
+            IList<Record> records = response.Body;
 
             ParkingTemplate template = new ParkingTemplate();
 
@@ -199,7 +207,15 @@ namespace BruPark.Jobs.OpenDataImporter
 
         private void ImportParkingsPublic()
         {
-            IList<Record> records = RestClient.Get<IList<Record>>(URL_PUBLIC);
+            Response<IList<Record>> response = RestClient.Get<IList<Record>>(URL_PUBLIC);
+
+            if (response.Failure)
+            {
+                Debug.WriteLine("ERROR:  " + response.Error);
+                return;
+            }
+
+            IList<Record> records = response.Body;
 
             ParkingTemplate template = new ParkingTemplate();
 

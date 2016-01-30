@@ -1,6 +1,7 @@
 ﻿
 using BruPark.Extensions;
 using BruPark.Persistence.Entities;
+using BruPark.Tools.RestClient;
 using BruPark.WebApi.Models;
 using GoogleMaps.Client;
 using GoogleMaps.Commons;
@@ -32,15 +33,23 @@ namespace BruPark.WebApi.Server.Controllers
                 destinations.Add(parking.Location);
             }
 
-            DistanceMatrixResponseRO response = client.RequestDistanceMatrix(origins, destinations);
+            Response<DistanceMatrixResponseRO> response = client.RequestDistanceMatrix(origins, destinations);
 
-            if ("OK".Equals(response.Status))
+            if (response.Failure)
             {
-                return response.Rows[0].Elements;
+                Debug.WriteLine("ERROR:  " + response.Error);
+                return null;
+            }
+
+            DistanceMatrixResponseRO output = response.Body;
+
+            if ("OK".Equals(output.Status))
+            {
+                return output.Rows[0].Elements;
             }
             else
             {
-                Debug.WriteLine("ERROR:  " + response.ErrorMessage);
+                Debug.WriteLine("ERROR:  " + output.ErrorMessage);
                 return null;
             }
         }
@@ -70,14 +79,22 @@ namespace BruPark.WebApi.Server.Controllers
         {
             GoogleMapsClient client = new GoogleMapsClient();
 
-            GeocodingResponseRO response = client.RequestGeocoding(address.ToString());
+            Response<GeocodingResponseRO> response = client.RequestGeocoding(address.ToString());
 
-            if (!"OK".Equals(response.Status))
+            if (response.Failure)
+            {
+                Debug.WriteLine("ERROR:  " + response.Error);
+                return null;
+            }
+
+            GeocodingResponseRO output = response.Body;
+
+            if (!"OK".Equals(output.Status))
             {
                 return null;
             }
 
-            IList<ResultRO> results = response.Results;
+            IList<ResultRO> results = output.Results;
 
             if ((results == null) || (results.Count < 1))
             {

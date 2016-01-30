@@ -5,35 +5,36 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BruPark.Apps.WPF.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="SearchFormPage" FontSize="16">
+      d:DesignHeight="600" d:DesignWidth="480"
+      FontSize="16"
+      ShowsNavigationUI="False"
+      Title="Search form">
 
-    <DockPanel Margin="16" VerticalAlignment="Stretch">
-        <Grid VerticalAlignment="Stretch">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="3*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+    <StackPanel Margin="16" Orientation="Vertical">
+        <TextBlock TextAlignment="Center">Find a parking space in Brussels</TextBlock>
 
-            <TextBox Name="street" Margin="0,0,0,16" Padding="4,8,4,8" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <GroupBox Margin="0,32,0,0" Padding="8">
+            <GroupBox.Header>Current location</GroupBox.Header>
+            
+            <StackPanel Orientation="Vertical">
+                <Label Target="{Binding ElementName=street}">Street:</Label>
+                <TextBox Name="txtStreet" Padding="4,8,4,8"/>
+                <Label Margin="0,8,0,0" Target="{Binding ElementName=municipality}">Municipality:</Label>
+                <ComboBox Name="cmbMunicipality" Cursor="Hand" Padding="4,8,4,8"/>
+            </StackPanel>
+        </GroupBox>
 
-            <ComboBox Name="postalCode" Cursor="Hand" Margin="0,0,16,0" Padding="4,8,4,8" Grid.Column="0" Grid.Row="1"/>
-            <ComboBox Name="city" Cursor="Hand" Padding="4" Grid.Column="1" Grid.Row="1"/>
+        <GroupBox Margin="0,16,0,0" Padding="8">
+            <GroupBox.Header>Additional information</GroupBox.Header>
 
-            <CheckBox Name="disabled" Cursor="Hand" FontSize="10" IsChecked="False" Margin="0,16,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
+            <CheckBox Name="chkDisabled" Cursor="Hand" FontSize="10" IsChecked="False" VerticalAlignment="Center" VerticalContentAlignment="Center">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="1.6" ScaleY="1.6"/>
                 </CheckBox.LayoutTransform>
                 <TextBlock Margin="4,0,0,0">I have a disability</TextBlock>
             </CheckBox>
+        </GroupBox>
 
-            <Button Content="Search" Cursor="Hand" Margin="0,16,0,0" Padding="8" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"/>
-        </Grid>
-    </DockPanel>
+        <Button Click="HandleSearch" Cursor="Hand" Margin="0,32,0,0" Padding="8">Search</Button>
+    </StackPanel>
 </Page>

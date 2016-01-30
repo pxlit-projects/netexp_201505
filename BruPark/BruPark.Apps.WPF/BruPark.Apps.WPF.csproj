@@ -55,6 +55,34 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\LoadingAnimation.xaml.cs">
+      <DependentUpon>LoadingAnimation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\AbstractConverter.cs" />
+    <Compile Include="Converters\DistanceConverter.cs" />
+    <Compile Include="Converters\DurationConverter.cs" />
+    <Compile Include="Converters\SuccessRateConverter.cs" />
+    <Compile Include="Models\AbstractModel.cs" />
+    <Compile Include="Models\ParkingModel.cs" />
+    <Compile Include="Pages\LoadingPage.xaml.cs">
+      <DependentUpon>LoadingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ParkingDetailsPage.xaml.cs">
+      <DependentUpon>ParkingDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ParkingListPage.xaml.cs">
+      <DependentUpon>ParkingListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FullParkingView.xaml.cs">
+      <DependentUpon>FullParkingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MiniParkingView.xaml.cs">
+      <DependentUpon>MiniParkingView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Controls\LoadingAnimation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,7 +95,27 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\LoadingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ParkingDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ParkingListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\SearchFormPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FullParkingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MiniParkingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,6 +150,29 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BruPark.OpenData.Client\BruPark.OpenData.Client.csproj">
+      <Project>{81d3c3d4-260d-49e0-8c36-15915c2903cd}</Project>
+      <Name>BruPark.OpenData.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BruPark.OpenData.Models\BruPark.OpenData.Models.csproj">
+      <Project>{fc50bf65-4dc0-4b0a-8163-91bab2fabc4f}</Project>
+      <Name>BruPark.OpenData.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BruPark.Tools.RestClient\BruPark.Tools.RestClient.csproj">
+      <Project>{f31fb6bd-0a91-46b7-a2a5-6772bf1146b3}</Project>
+      <Name>BruPark.Tools.RestClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BruPark.WebApi.Client\BruPark.WebApi.Client.csproj">
+      <Project>{0f7289e4-9cab-479a-a2a9-69e40105fc3f}</Project>
+      <Name>BruPark.WebApi.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BruPark.WebApi.Models\BruPark.WebApi.Models.csproj">
+      <Project>{5a5dff53-63e6-4b1b-ab21-1ca48a5cc87a}</Project>
+      <Name>BruPark.WebApi.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

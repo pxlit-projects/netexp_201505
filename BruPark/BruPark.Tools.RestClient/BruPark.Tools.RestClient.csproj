@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="HttpUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Response.cs" />
     <Compile Include="RestClient.cs" />
   </ItemGroup>
   <ItemGroup>

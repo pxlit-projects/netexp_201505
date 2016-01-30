@@ -5,12 +5,28 @@ namespace BruPark.Tools.RestClient
 {
     public class RestClient
     {
-        public static T Get<T>(string url)
+        public static Response<T> Get<T>(string url)
         {
-            string json = HttpUtils.HttpGet(url);
-            Debug.WriteLine(json);
+            return Parse<T>(HttpUtils.HttpGet(url));
+        }
 
-            return Parse<T>(json);
+        private static Response<T> Parse<T>(Response<string> response)
+        {
+            Response<T> result = new Response<T>(response.StatusCode);
+
+            if (response.Failure)
+            {
+                result.Error = response.Error;
+            }
+            else
+            {
+                string json = response.Body;
+                Debug.WriteLine("OUTPUT:  " + json);
+
+                result.Body = Parse<T>(json);
+            }
+
+            return result;
         }
 
         private static T Parse<T>(string json)
@@ -26,15 +42,12 @@ namespace BruPark.Tools.RestClient
             }
         }
 
-        public static T Post<T>(string url, object payload)
+        public static Response<T> Post<T>(string url, object payload)
         {
             string input = JsonConvert.SerializeObject(payload);
             Debug.WriteLine("INPUT:  " + input);
-
-            string output = HttpUtils.HttpPost(url, input);
-            Debug.WriteLine("OUTPUT:  " + output);
-
-            return Parse<T>(output);
+            
+            return Parse<T>(HttpUtils.HttpPost(url, input));
         }
     }
 }

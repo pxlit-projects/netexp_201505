@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BruPark.Apps.WPF"
         mc:Ignorable="d"
-        Title="BruPark" Height="810" Width="500" WindowStartupLocation="CenterScreen" WindowState="Normal">
+        Title="BruPark" Height="810" Width="500"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Normal">
     <Frame Name="frame"/>
 </Window>

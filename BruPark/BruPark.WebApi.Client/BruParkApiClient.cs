@@ -15,12 +15,12 @@ namespace BruPark.WebApi.Client
             // Nothing to do here (yet)
         }
 
-        public SearchResponseRO SearchParkings(SearchRequestRO request)
+        public Response<SearchResponseRO> SearchParkings(SearchRequestRO request)
         {
             return RestClient.Post<SearchResponseRO>(Url("/parkings/search"), request);
         }
 
-        public FeedbackResponseRO SubmitFeedback(int parkingId, FeedbackRequestRO request)
+        public Response<FeedbackResponseRO> SubmitFeedback(int parkingId, FeedbackRequestRO request)
         {
             return RestClient.Post<FeedbackResponseRO>(Url("/parkings/{0}/feedback", parkingId), request);
         }

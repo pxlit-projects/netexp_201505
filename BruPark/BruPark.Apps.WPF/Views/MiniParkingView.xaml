@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="BruPark.Apps.WPF.Views.MiniParkingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converters="clr-namespace:BruPark.Apps.WPF.Converters"
+             xmlns:local="clr-namespace:BruPark.Apps.WPF.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="240" d:DesignWidth="480">
+    <StackPanel Orientation="Vertical">
+        <TextBlock Text="{Binding AddressNL, Mode=OneTime}"/>
+        <TextBlock Margin="0,4,0,0" Text="{Binding AddressFR, Mode=OneTime}"/>
+
+        <DockPanel LastChildFill="True" Margin="0,4,0,0">
+            <TextBlock DockPanel.Dock="Left" Margin="4,0" Text="{Binding Distance, Converter={converters:DistanceConverter}, Mode=OneTime}"/>
+            <TextBlock DockPanel.Dock="Left" Margin="4,0" Text="{Binding Duration, Converter={converters:DurationConverter}, Mode=OneTime}"/>
+            <TextBlock DockPanel.Dock="Right" Margin="4,0" Text="{Binding SuccessRate, Converter={converters:SuccessRateConverter}, Mode=OneTime}" TextAlignment="Right"/>
+        </DockPanel>
+    </StackPanel>
+</UserControl>

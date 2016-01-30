@@ -140,6 +140,10 @@
       <Project>{beb89453-95f4-43d3-be63-11314a12b504}</Project>
       <Name>BruPark.Persistence.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BruPark.Tools.RestClient\BruPark.Tools.RestClient.csproj">
+      <Project>{F31FB6BD-0A91-46B7-A2A5-6772BF1146B3}</Project>
+      <Name>BruPark.Tools.RestClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BruPark.WebApi.Models\BruPark.WebApi.Models.csproj">
       <Project>{5a5dff53-63e6-4b1b-ab21-1ca48a5cc87a}</Project>
       <Name>BruPark.WebApi.Models</Name>

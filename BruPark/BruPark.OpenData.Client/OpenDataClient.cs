@@ -38,16 +38,18 @@ namespace BruPark.OpenData.Client
                 url += string.Format("&geofilter.distance={0},{1},{2}", range.Latitude, range.Longitude, range.Distance);
             }
 
-            SearchResult search;
-
+            Response<SearchResult> response;
+            
             try {
-                search = RestClient.Get<SearchResult>(url);
+                 response = RestClient.Get<SearchResult>(url);
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e.Message);
                 return null;
             }
+
+            SearchResult search = response.Body;
 
             if (search.Hits < 1)
             {

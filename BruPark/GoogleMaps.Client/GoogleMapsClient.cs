@@ -97,7 +97,7 @@ namespace GoogleMaps.Client
             return result.ToString();
         }
 
-        public DistanceMatrixResponseRO RequestDistanceMatrix(IList<GeoLocation> origins, IList<GeoLocation> destinations, string mode = "driving")
+        public Response<DistanceMatrixResponseRO> RequestDistanceMatrix(IList<GeoLocation> origins, IList<GeoLocation> destinations, string mode = "driving")
         {
             IDictionary<string, string> parameters = new Dictionary<string, string>(3);
 
@@ -111,7 +111,7 @@ namespace GoogleMaps.Client
             return RestClient.Get<DistanceMatrixResponseRO>(url);
         }
 
-        public GeocodingResponseRO RequestGeocoding(string address)
+        public Response<GeocodingResponseRO> RequestGeocoding(string address)
         {
             IDictionary<string, string> parameters = new Dictionary<string, string>(2);
             parameters.Add("address", HttpUtility.UrlEncode(address, Encoding.UTF8));

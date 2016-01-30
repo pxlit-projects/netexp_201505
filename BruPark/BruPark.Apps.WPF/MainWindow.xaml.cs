@@ -1,5 +1,6 @@
 ﻿using BruPark.Apps.WPF.Pages;
 using System.Windows;
+using System.Windows.Navigation;
 
 namespace BruPark.Apps.WPF
 {
@@ -12,6 +13,10 @@ namespace BruPark.Apps.WPF
         {
             InitializeComponent();
 
+            //  Hide the navigation bar
+            frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+
+            //  Show the search form
             frame.NavigationService.Navigate(new SearchFormPage());
         }
     }
