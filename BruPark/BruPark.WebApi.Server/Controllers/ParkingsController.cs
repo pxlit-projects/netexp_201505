@@ -112,7 +112,18 @@ namespace BruPark.WebApi.Server.Controllers
 
             //  Fetch the parkings that match the search criteria from the database.
 
-            IList<ParkingPO> parkings = (from p in db.Parkings where p.Disabled == request.Disabled select p).ToList();
+            IList<ParkingPO> parkings;
+
+            try
+            {
+                parkings = (from p in db.Parkings where p.Disabled == request.Disabled select p).ToList();
+            }
+            catch (Exception e)
+            {
+                response.Error = e.Message;
+
+                return Content(HttpStatusCode.InternalServerError, response);
+            }
 
             if (parkings.Count <= 0)
             {

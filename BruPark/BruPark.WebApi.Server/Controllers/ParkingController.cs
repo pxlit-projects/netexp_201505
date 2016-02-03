@@ -73,17 +73,17 @@ namespace BruPark.WebApi.Server.Controllers
 
             FeedbackPO feedback = new FeedbackPO();
 
-            feedback.Available = request.Available;
+            feedback.Available = request.Feedback;
 
             parking.FeedbackList.Add(feedback);
 
             //  Commit the transaction.
 
             db.SaveChanges();
-
+            
             //  Send the response.
 
-            response.Error = parking.AddressDutch.Street;
+            response.SuccessRate = parking.SuccessRate;
 
             return Ok(response);
         }

@@ -24,6 +24,14 @@ namespace BruPark.Apps.WPF.Models
             }
         }
 
+        public bool Disabled
+        {
+            get
+            {
+                return model.Disabled;
+            }
+        }
+
         public long Distance
         {
             get

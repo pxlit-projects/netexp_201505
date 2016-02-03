@@ -4,8 +4,10 @@ using BruPark.Tools.RestClient;
 using BruPark.WebApi.Client;
 using BruPark.WebApi.Models;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace BruPark.Apps.WPF.Pages
 {
@@ -22,8 +24,8 @@ namespace BruPark.Apps.WPF.Pages
 
 
             // TODO: Remove after testing
-            cmbMunicipality.SelectedIndex = 298;
-            txtStreet.Text = "Detmoldlaan";
+            cmbMunicipality.SelectedIndex = 18; // 298;
+            txtStreet.Text = "Klipveldstraat";
         }
 
 
@@ -32,35 +34,61 @@ namespace BruPark.Apps.WPF.Pages
         {
             Municipality municipality = (Municipality)cmbMunicipality.SelectedItem;
 
+            if (municipality == null)
+            {
+                MessageBoxUtils.ShowWarning("Please select a municipality", "Missing input");
+                return;
+            }
+
             AddressRO address = new AddressRO();
             address.City = municipality.Name;
             address.PostalCode = Convert.ToString(municipality.PostalCode);
             address.Street = txtStreet.Text;
 
+            if (string.IsNullOrWhiteSpace(address.Street))
+            {
+                MessageBoxUtils.ShowWarning("Please fill in the street", "Missing input");
+                return;
+            }
+
             SearchRequestRO request = new SearchRequestRO();
             request.Address = address;
             request.Disabled = (chkDisabled.IsChecked == true);
 
-            Response<SearchResponseRO> response;
-
-            using (BruParkApiClient client = new BruParkApiClient()) {
-                response = client.SearchParkings(request);
-            }
-
-            if (response.Failure)
+            Func<Response<SearchResponseRO>> producer = () =>
             {
-                Debug.WriteLine("ERROR:  " + response.Error);
-            }
+                using (BruParkApiClient client = new BruParkApiClient())
+                {
+                    return client.SearchParkings(request);
+                }
+            };
 
-            SearchResponseRO output = response.Body;
-
-            if (!String.IsNullOrEmpty(output.Error))
+            Action<Response<SearchResponseRO>> consumer = (response) =>
             {
-                Debug.WriteLine("ERROR:  " + output.Error);
-                return;
-            }
+                overlay.Visibility = System.Windows.Visibility.Hidden;
 
-            NavigationService.Navigate(new ParkingListPage(output.Results));
+                if (response.Failure)
+                {
+                    Debug.WriteLine("ERROR:  " + response.Error);
+                    MessageBoxUtils.ShowError(response.Error);
+                    return;
+                }
+
+                SearchResponseRO output = response.Body;
+
+                if (!String.IsNullOrEmpty(output.Error))
+                {
+                    Debug.WriteLine("ERROR:  " + output.Error);
+                    MessageBoxUtils.ShowError(output.Error);
+                    return;
+                }
+
+                NavigationService.Navigate(new ParkingListPage(output.Results));
+            };
+
+            overlay.Visibility = System.Windows.Visibility.Visible;
+
+            BackgroundWorkerUtils.Start(producer, consumer);
         }
     }
 }

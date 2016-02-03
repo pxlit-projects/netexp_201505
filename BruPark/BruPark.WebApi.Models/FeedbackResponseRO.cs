@@ -7,5 +7,8 @@ namespace BruPark.WebApi.Models
     {
         [JsonProperty(PropertyName = "error", NullValueHandling = NullValueHandling.Ignore)]
         public string Error { get; set; }
+
+        [JsonProperty(PropertyName = "success_rate")]
+        public int SuccessRate { get; set; }
     }
 }

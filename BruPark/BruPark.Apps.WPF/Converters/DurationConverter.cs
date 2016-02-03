@@ -11,7 +11,10 @@ namespace BruPark.Apps.WPF.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             int duration = System.Convert.ToInt32(value);
+
+            return TimeSpan.FromSeconds(duration).ToString("g");
             
+            /*
             if (duration < 60)
             {
                 return (duration + " sec.");
@@ -43,7 +46,13 @@ namespace BruPark.Apps.WPF.Converters
                 result.Append(' ').Append(minutes).Append(" min.");
             }
 
+            if (seconds > 0)
+            {
+                result.Append('')
+            }
+
             return result.ToString();
+            */
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

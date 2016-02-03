@@ -12,8 +12,8 @@
         <TextBlock Margin="0,4,0,0" Text="{Binding AddressFR, Mode=OneTime}"/>
 
         <DockPanel LastChildFill="True" Margin="0,4,0,0">
-            <TextBlock DockPanel.Dock="Left" Margin="4,0" Text="{Binding Distance, Converter={converters:DistanceConverter}, Mode=OneTime}"/>
-            <TextBlock DockPanel.Dock="Left" Margin="4,0" Text="{Binding Duration, Converter={converters:DurationConverter}, Mode=OneTime}"/>
+            <TextBlock DockPanel.Dock="Left" Margin="0,0,32,0" Text="{Binding Distance, Converter={converters:DistanceConverter}, Mode=OneTime}"/>
+            <TextBlock DockPanel.Dock="Left" Margin="0,0,32,0" Text="{Binding Duration, Converter={converters:DurationConverter}, Mode=OneTime}"/>
             <TextBlock DockPanel.Dock="Right" Margin="4,0" Text="{Binding SuccessRate, Converter={converters:SuccessRateConverter}, Mode=OneTime}" TextAlignment="Right"/>
         </DockPanel>
     </StackPanel>

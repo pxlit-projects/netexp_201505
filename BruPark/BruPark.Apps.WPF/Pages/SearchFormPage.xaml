@@ -2,7 +2,8 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:controls="clr-namespace:BruPark.Apps.WPF.Controls"
       xmlns:local="clr-namespace:BruPark.Apps.WPF.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="480"
@@ -10,31 +11,37 @@
       ShowsNavigationUI="False"
       Title="Search form">
 
-    <StackPanel Margin="16" Orientation="Vertical">
-        <TextBlock TextAlignment="Center">Find a parking space in Brussels</TextBlock>
+    <Grid>
+        <StackPanel Margin="16" Orientation="Vertical">
+            <TextBlock TextAlignment="Center">Find a parking space in Brussels</TextBlock>
 
-        <GroupBox Margin="0,32,0,0" Padding="8">
-            <GroupBox.Header>Current location</GroupBox.Header>
-            
-            <StackPanel Orientation="Vertical">
-                <Label Target="{Binding ElementName=street}">Street:</Label>
-                <TextBox Name="txtStreet" Padding="4,8,4,8"/>
-                <Label Margin="0,8,0,0" Target="{Binding ElementName=municipality}">Municipality:</Label>
-                <ComboBox Name="cmbMunicipality" Cursor="Hand" Padding="4,8,4,8"/>
-            </StackPanel>
-        </GroupBox>
+            <GroupBox Margin="0,32,0,0" Padding="8">
+                <GroupBox.Header>Current location</GroupBox.Header>
 
-        <GroupBox Margin="0,16,0,0" Padding="8">
-            <GroupBox.Header>Additional information</GroupBox.Header>
+                <StackPanel Orientation="Vertical">
+                    <Label Target="{Binding ElementName=street}">Street:</Label>
+                    <TextBox Name="txtStreet" Padding="4,8,4,8"/>
+                    <Label Margin="0,8,0,0" Target="{Binding ElementName=municipality}">Municipality:</Label>
+                    <ComboBox Name="cmbMunicipality" Cursor="Hand" Padding="4,8,4,8"/>
+                </StackPanel>
+            </GroupBox>
 
-            <CheckBox Name="chkDisabled" Cursor="Hand" FontSize="10" IsChecked="False" VerticalAlignment="Center" VerticalContentAlignment="Center">
-                <CheckBox.LayoutTransform>
-                    <ScaleTransform ScaleX="1.6" ScaleY="1.6"/>
-                </CheckBox.LayoutTransform>
-                <TextBlock Margin="4,0,0,0">I have a disability</TextBlock>
-            </CheckBox>
-        </GroupBox>
+            <GroupBox Margin="0,16,0,0" Padding="8">
+                <GroupBox.Header>Additional information</GroupBox.Header>
 
-        <Button Click="HandleSearch" Cursor="Hand" Margin="0,32,0,0" Padding="8">Search</Button>
-    </StackPanel>
+                <CheckBox Name="chkDisabled" Cursor="Hand" FontSize="10" IsChecked="False" VerticalAlignment="Center" VerticalContentAlignment="Center">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="1.6" ScaleY="1.6"/>
+                    </CheckBox.LayoutTransform>
+                    <TextBlock Margin="4,0,0,0">I have a disability</TextBlock>
+                </CheckBox>
+            </GroupBox>
+
+            <Button Click="HandleSearch" Cursor="Hand" Margin="0,32,0,0" Padding="8">Search</Button>
+        </StackPanel>
+
+        <Border Background="#CCFFFFFF" x:Name="overlay" Visibility="Hidden">
+            <controls:LoadingAnimation/>
+        </Border>
+    </Grid>
 </Page>

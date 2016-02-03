@@ -20,21 +20,10 @@
     
     <DockPanel LastChildFill="True">
         <Button Click="HandleNewSearch" DockPanel.Dock="Bottom" Padding="8">New search</Button>
+        
         <ListView ItemContainerStyle="{StaticResource itemstyle}" Name="list" HorizontalContentAlignment="Stretch">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <!--
-                    <StackPanel Cursor="Hand" Margin="4" Orientation="Vertical">
-                        <TextBlock Text="{Binding AddressNL}"/>
-                        <TextBlock Margin="0,4,0,0" Text="{Binding AddressFR}"/>
-
-                        <DockPanel LastChildFill="True" Margin="0,4,0,0">
-                            <TextBlock DockPanel.Dock="Left" Margin="4,0" Text="{Binding Distance, Converter={converters:DistanceConverter}}"/>
-                            <TextBlock DockPanel.Dock="Left" Margin="4,0" Text="{Binding Duration, Converter={converters:DurationConverter}}"/>
-                            <TextBlock DockPanel.Dock="Right" Margin="4,0" Text="{Binding SuccessRate, Converter={converters:SuccessRateConverter}}" TextAlignment="Right"/>
-                        </DockPanel>
-                    </StackPanel>
-                    -->
                     <views:MiniParkingView Cursor="Hand" Margin="4"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
