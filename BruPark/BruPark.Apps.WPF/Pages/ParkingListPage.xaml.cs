@@ -1,4 +1,4 @@
-﻿using BruPark.Apps.WPF.Models;
+﻿using BruPark.Apps.WPF.ViewModels;
 using BruPark.WebApi.Models;
 using System;
 using System.Collections.Generic;
@@ -25,7 +25,7 @@ namespace BruPark.Apps.WPF.Pages
         {
             ParkingRO parking = (ParkingRO)((ListViewItem)sender).Content;
 
-            NavigationService.Navigate(new ParkingDetailsPage(new ParkingModel(parking)));
+            NavigationService.Navigate(new ParkingDetailsPage(new ParkingViewModel(parking)));
         }
 
         private void HandleNewSearch(object sender, EventArgs args)

@@ -17,6 +17,7 @@
             <views:FullParkingView/>
 
             <Button Click="HandleFeedback" Cursor="Hand" Margin="0,32,0,0" Padding="16,8">Submit feedback</Button>
+            <Button Click="HandleBack" Cursor="Hand" Margin="0,32,0,0" Padding="16,8">Back to list</Button>
         </StackPanel>
 
         <Border Background="#CCFFFFFF" x:Name="overlay" Visibility="Hidden">

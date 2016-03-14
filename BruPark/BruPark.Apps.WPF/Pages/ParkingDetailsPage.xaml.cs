@@ -1,4 +1,4 @@
-﻿using BruPark.Apps.WPF.Models;
+﻿using BruPark.Apps.WPF.ViewModels;
 using BruPark.Tools.RestClient;
 using BruPark.WebApi.Client;
 using BruPark.WebApi.Models;
@@ -14,15 +14,23 @@ namespace BruPark.Apps.WPF.Pages
     /// </summary>
     public partial class ParkingDetailsPage : Page
     {
-        private ParkingModel model;
+        private ParkingViewModel model;
 
 
 
-        public ParkingDetailsPage(ParkingModel model)
+        public ParkingDetailsPage(ParkingViewModel model)
         {
             InitializeComponent();
 
             DataContext = this.model = model;
+        }
+
+        private void HandleBack(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
         }
 
         private void HandleFeedback(object sender, RoutedEventArgs e)

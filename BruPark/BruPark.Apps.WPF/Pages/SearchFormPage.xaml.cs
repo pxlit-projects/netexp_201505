@@ -1,4 +1,5 @@
-﻿using BruPark.OpenData.Client;
+﻿using BruPark.Apps.WPF.ViewModels;
+using BruPark.OpenData.Client;
 using BruPark.OpenData.Models;
 using BruPark.Tools.RestClient;
 using BruPark.WebApi.Client;
@@ -20,9 +21,8 @@ namespace BruPark.Apps.WPF.Pages
         {
             InitializeComponent();
 
-            cmbMunicipality.ItemsSource = new MunicipalityManager().GetMunicipalitiesByPostalCode();
-
-
+            this.DataContext = new SearchFormViewModel();
+            
             // TODO: Remove after testing
             cmbMunicipality.SelectedIndex = 18; // 298;
             txtStreet.Text = "Klipveldstraat";

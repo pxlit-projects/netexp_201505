@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace BruPark.Apps.WPF.Models
+namespace BruPark.Apps.WPF.ViewModels
 {
-    public abstract class AbstractModel : INotifyPropertyChanged
+    public abstract class AbstractViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -64,14 +65,15 @@
     <Compile Include="Converters\DurationConverter.cs" />
     <Compile Include="Converters\SuccessRateConverter.cs" />
     <Compile Include="MessageBoxUtils.cs" />
-    <Compile Include="Models\AbstractModel.cs" />
-    <Compile Include="Models\ParkingModel.cs" />
+    <Compile Include="ViewModels\AbstractViewModel.cs" />
+    <Compile Include="ViewModels\ParkingViewModel.cs" />
     <Compile Include="Pages\ParkingDetailsPage.xaml.cs">
       <DependentUpon>ParkingDetailsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ParkingListPage.xaml.cs">
       <DependentUpon>ParkingListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\SearchFormViewModel.cs" />
     <Compile Include="Views\FullParkingView.xaml.cs">
       <DependentUpon>FullParkingView.xaml</DependentUpon>
     </Compile>

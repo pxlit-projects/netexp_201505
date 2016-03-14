@@ -1,8 +1,8 @@
 ﻿using BruPark.WebApi.Models;
 
-namespace BruPark.Apps.WPF.Models
+namespace BruPark.Apps.WPF.ViewModels
 {
-    public class ParkingModel : AbstractModel
+    public class ParkingViewModel : AbstractViewModel
     {
         private ParkingRO model;
 
@@ -81,7 +81,7 @@ namespace BruPark.Apps.WPF.Models
 
         
 
-        public ParkingModel(ParkingRO model)
+        public ParkingViewModel(ParkingRO model)
         {
             this.model = model;
         }

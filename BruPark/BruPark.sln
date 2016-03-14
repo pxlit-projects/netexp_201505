@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BruPark.Apps.WPF", "BruPark
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BruPark.WebApi.Client", "BruPark.WebApi.Client\BruPark.WebApi.Client.csproj", "{0F7289E4-9CAB-479A-A2A9-69E40105FC3F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BruPark.Apps.WPF.Tests", "BruPark.Apps.WPF.Tests\BruPark.Apps.WPF.Tests.csproj", "{CF5176D0-62D1-4D71-B6CC-D9FBB05B12FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,10 @@ Global
 		{0F7289E4-9CAB-479A-A2A9-69E40105FC3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F7289E4-9CAB-479A-A2A9-69E40105FC3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F7289E4-9CAB-479A-A2A9-69E40105FC3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF5176D0-62D1-4D71-B6CC-D9FBB05B12FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF5176D0-62D1-4D71-B6CC-D9FBB05B12FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF5176D0-62D1-4D71-B6CC-D9FBB05B12FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF5176D0-62D1-4D71-B6CC-D9FBB05B12FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

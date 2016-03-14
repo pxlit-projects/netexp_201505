@@ -22,7 +22,7 @@
                     <Label Target="{Binding ElementName=street}">Street:</Label>
                     <TextBox Name="txtStreet" Padding="4,8,4,8"/>
                     <Label Margin="0,8,0,0" Target="{Binding ElementName=municipality}">Municipality:</Label>
-                    <ComboBox Name="cmbMunicipality" Cursor="Hand" Padding="4,8,4,8"/>
+                    <ComboBox Name="cmbMunicipality" Cursor="Hand" ItemsSource="{Binding Municipalities, Mode=OneWay}" Padding="4,8,4,8"/>
                 </StackPanel>
             </GroupBox>
 
@@ -38,6 +38,7 @@
             </GroupBox>
 
             <Button Click="HandleSearch" Cursor="Hand" Margin="0,32,0,0" Padding="8">Search</Button>
+            <Button Command="{Binding Randomize}" Content="{Binding RandomizeLabel, Mode=TwoWay}" Cursor="Hand" Margin="0,32,0,0" Padding="8"></Button>
         </StackPanel>
 
         <Border Background="#CCFFFFFF" x:Name="overlay" Visibility="Hidden">
