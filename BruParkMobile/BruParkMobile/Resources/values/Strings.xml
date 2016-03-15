@@ -2,4 +2,13 @@
 <resources>
 	<string name="hello">Hello World, Click Me!</string>
 	<string name="app_name">BruParkMobile</string>
+
+	<!-- Main -->
+	<string name="street">Street</string>
+	<string name="municipality">Municipality</string>
+	<string name="disability">I have a disability</string>
+	<string name="search">Search</string>
+
+	<!-- Resuls -->
+	<string name="new_search">New search</string>
 </resources>

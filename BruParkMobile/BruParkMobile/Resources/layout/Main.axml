@@ -1,14 +1,46 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
-<Button  
-    android:id="@+id/myButton"
-    android:layout_width="match_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
-</LinearLayout>
-
+    android:padding="16dp"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <TextView
+        android:id="@+id/lblStreet"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/street" />
+    <EditText
+        android:id="@+id/txtStreet"
+        android:layout_marginBottom="8dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/lblStreet" />
+    <TextView
+        android:id="@+id/lblMunicipality"
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/txtStreet"
+        android:text="@string/municipality" />
+    <Spinner
+        android:id="@+id/spinMunicipality"
+        android:layout_margin="8dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/lblMunicipality" />
+    <CheckBox
+        android:id="@+id/checkDisabled"
+        android:layout_margin="8dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/spinMunicipality"
+        android:text="@string/disability" />
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_margin="8dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/checkDisabled"
+        android:text="@string/search" />
+</RelativeLayout>

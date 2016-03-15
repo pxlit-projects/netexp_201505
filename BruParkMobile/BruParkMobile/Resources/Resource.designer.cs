@@ -44,8 +44,47 @@ namespace BruParkMobile
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050006
+			public const int btnBackToList = 2131034118;
+			
+			// aapt resource value: 0x7f050005
+			public const int btnFeedback = 2131034117;
+			
+			// aapt resource value: 0x7f05000d
+			public const int btnNewSearch = 2131034125;
+			
+			// aapt resource value: 0x7f05000b
+			public const int btnSearch = 2131034123;
+			
+			// aapt resource value: 0x7f050001
+			public const int checkDisabled = 2131034113;
+			
+			// aapt resource value: 0x7f050009
+			public const int lblMunicipality = 2131034121;
+			
+			// aapt resource value: 0x7f050007
+			public const int lblStreet = 2131034119;
+			
+			// aapt resource value: 0x7f05000c
+			public const int listResults = 2131034124;
+			
+			// aapt resource value: 0x7f05000a
+			public const int spinMunicipality = 2131034122;
+			
 			// aapt resource value: 0x7f050000
-			public const int myButton = 2131034112;
+			public const int txtAddressNL = 2131034112;
+			
+			// aapt resource value: 0x7f050002
+			public const int txtDistance = 2131034114;
+			
+			// aapt resource value: 0x7f050003
+			public const int txtDuration = 2131034115;
+			
+			// aapt resource value: 0x7f050008
+			public const int txtStreet = 2131034120;
+			
+			// aapt resource value: 0x7f050004
+			public const int txtSuccessRate = 2131034116;
 			
 			static Id()
 			{
@@ -61,7 +100,13 @@ namespace BruParkMobile
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int Details = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int Main = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int Results = 2130903042;
 			
 			static Layout()
 			{
@@ -95,8 +140,23 @@ namespace BruParkMobile
 			// aapt resource value: 0x7f040001
 			public const int app_name = 2130968577;
 			
+			// aapt resource value: 0x7f040004
+			public const int disability = 2130968580;
+			
 			// aapt resource value: 0x7f040000
 			public const int hello = 2130968576;
+			
+			// aapt resource value: 0x7f040003
+			public const int municipality = 2130968579;
+			
+			// aapt resource value: 0x7f040006
+			public const int new_search = 2130968582;
+			
+			// aapt resource value: 0x7f040005
+			public const int search = 2130968581;
+			
+			// aapt resource value: 0x7f040002
+			public const int street = 2130968578;
 			
 			static String()
 			{
